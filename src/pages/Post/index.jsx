@@ -11,6 +11,10 @@ export default function Post() {
     return post.id === Number(params.id);
   });
 
+  if (!post) {
+    return <h1>Post não encontrado</h1>;
+  }
+
   return (
     <PostModel photo={`/assets/posts/${post.id}/capa.png`} title={post.titulo}>
       <div className="post-markdown-container">
