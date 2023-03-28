@@ -1,25 +1,7 @@
 import styles from "./banner.module.css";
-import { useState, useEffect } from "react";
+import circuloColorido from "../../assets/circulo_colorido.png";
 
 export default function Banner() {
-  const [user, setUser] = useState({
-    avatar: "",
-    name: "",
-  });
-
-  useEffect(() => {
-    fetch("https://api.github.com/users/alisson2014")
-      .then((response) => response.json())
-      .then((data) => {
-        setUser({
-          avatar: data.avatar_url,
-          name: data.name,
-        })
-          .catch((error) => console.log(error))
-          .finally();
-      });
-  }, []);
-
   return (
     <div className={styles.banner}>
       <div className={styles.apresentacao}>
@@ -33,11 +15,16 @@ export default function Banner() {
       </div>
       <div className={styles.imagens}>
         <img
-          src="/assets/circulo_colorido.png"
+          src={circuloColorido}
           alt="circulo colorido"
           className={styles.circuloColorido}
         />
-        <img src={user.avatar} alt={user.name} className={styles.minhaFoto} />
+        <img
+          src="https://github.com/alisson2014.png"
+          alt="Alisson"
+          title="Alisson"
+          className={styles.minhaFoto}
+        />
       </div>
     </div>
   );
